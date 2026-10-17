@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ivy Chop Spot | Anyigba, Kogi State</title>
+    <meta name="description" content="Enjoy pasta, noodles, snacks, cakes, food trays and freshly made drinks at Ivy Chop Spot in Anyigba, Kogi State.">
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: auto;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: white;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 22px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffcf70;
+            letter-spacing: 0.7px;
+            text-decoration: none;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+            transition: color 0.3s ease;
+        }
+
+        body.menu-open .nav-links a {
+            color: #222;
+            text-shadow: none;
+        }
+
+        body.menu-open .nav-links a:hover,
+        body.menu-open .nav-links a.active {
+            color: #a66f13;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ffcf70;
+        }
+
+        /* SIDEBAR BUTTONS */
+        .menu-toggle,
+        .sidebar-close {
+            display: none;
+            border: none;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+        }
+
+        /* PAGE SWITCHING */
+        .view-section {
+            display: none;
+            animation: sectionAppear 0.4s ease both;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        .view-section.active.hero {
+            display: flex;
+        }
+
+        @keyframes sectionAppear {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* HOME PAGE */
+        .hero {
+            min-height: 100vh;
+            min-height: 100svh;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            overflow: hidden;
+            background-color: #1a120b;
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.38),
+                    rgba(0, 0, 0, 0.68)
+                ),
+                url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=90");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                120deg,
+                transparent 25%,
+                rgba(255, 255, 255, 0.08) 50%,
+                transparent 75%
+            );
+            transform: translateX(-100%);
+            animation: lightSweep 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes lightSweep {
+            0%, 55% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+            animation: fadeUp 1.2s ease both;
+        }
+
+        .welcome-label {
+            display: inline-block;
+            color: #ffcf70;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 7vw, 82px);
+            line-height: 1.1;
+            margin-bottom: 18px;
+            font-weight: 900;
+        }
+
+        .hero h1 span {
+            color: #ffcf70;
+        }
+
+        .location-tag {
+            color: #ffcf70;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 17px;
+            line-height: 1.9;
+            color: #f1f1f1;
+        }
+
+        .gold-line {
+            width: 75px;
+            height: 3px;
+            margin: 22px auto;
+            background: #ffcf70;
+            border-radius: 10px;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* GENERAL SECTIONS */
+        .section {
+            padding: 105px 6% 60px;
+            min-height: 100vh;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(28px, 4.5vw, 40px);
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 span {
+            color: #b78328;
+        }
+
+        .section-heading p {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 4px;
+        }
+
+        /* MENU */
+        #menu {
+            background: #fff;
+            color: #222;
+        }
+
+        #menu .section-heading p {
+            color: #666;
+        }
+
+        .menu-category {
+            max-width: 1200px;
+            margin: 28px auto 15px;
+            font-size: 22px;
+            color: #8c5e13;
+            border-bottom: 2px solid #f0dfbd;
+            padding-bottom: 8px;
+        }
+
+        .menu-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(215px, 240px));
+            gap: 20px;
+        }
+
+        .food-card {
+            background: #fff;
+            color: #222;
+            border: 1px solid #e8e8e8;
+            border-radius: 13px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            transition: transform 0.25s ease,
+                        box-shadow 0.25s ease;
+            width: 100%;
+            max-width: 240px;
+        }
+
+        .food-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+        }
+
+        /* FOOD IMAGES */
+        .food-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 155px;
+            background: #f2eee6;
+            color: #8b7b62;
+            border-bottom: 1px dashed #d2c4ac;
+            overflow: hidden;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-placeholder {
+            text-align: center;
+            padding: 12px;
+            line-height: 1.5;
+            font-size: 12px;
+        }
+
+        .photo-placeholder .camera {
+            display: block;
+            font-size: 27px;
+            margin-bottom: 5px;
+        }
+
+        /* FOOD CARD CONTENT */
+        .food-info {
+            padding: 13px;
+        }
+
+        .food-info h3 {
+            font-size: 17px;
+            line-height: 1.35;
+            margin-bottom: 6px;
+        }
+
+        .food-description {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #777;
+            min-height: 36px;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            color: #a66f13;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 11px;
+        }
+
+        /* QUANTITY CONTROLS */
+        .quantity-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 9px;
+        }
+
+        .quantity-row label {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .quantity-controls {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #d8c49f;
+            border-radius: 7px;
+            background: #fff8e9;
+            color: #8c5e13;
+            font-size: 21px;
+            font-weight: bold;
+            line-height: 1;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .quantity-btn:hover {
+            background: #f0dfbd;
+        }
+
+        .quantity {
+            width: 40px;
+            height: 32px;
+            padding: 5px 2px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 14px;
+            text-align: center;
+            background: #fff;
+            color: #222;
+        }
+
+        .item-total {
+            font-size: 12px;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        /* ORDER BUTTON */
+        .order-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 13px;
+            min-height: 34px;
+            border: 1px solid rgba(24, 139, 69, 0.45);
+            border-radius: 30px;
+            background: rgba(24, 139, 69, 0.12);
+            color: #116b34;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: background 0.2s ease,
+                        color 0.2s ease;
+        }
+
+        .order-button:hover {
+            background: #188b45;
+            color: white;
+        }
+
+        /* ORDER SUMMARY */
+        .cart-summary {
+            max-width: 1200px;
+            margin: 28px auto 0;
+            background: #fff8e9;
+            border: 1px solid #f0d8a5;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .cart-summary h3 {
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .cart-total {
+            color: #996515;
+            font-size: 25px;
+            font-weight: bold;
+            margin: 10px 0 16px;
+        }
+
+        .checkout-button {
+            display: inline-block;
+            background: #188b45;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 11px 20px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .checkout-button:hover {
+            background: #116b34;
+        }
+
+        /* ABOUT AND CONTACT BACKGROUNDS */
+        #about,
+        #contact {
+            background-color: #17120d;
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.72),
+                    rgba(0, 0, 0, 0.82)
+                ),
+                url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=90");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            color: white;
+        }
+
+        #about .section-heading h2 span,
+        #contact .section-heading h2 span {
+            color: #ffcf70;
+        }
+
+        .about-content {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            line-height: 1.9;
+            font-size: 15px;
+        }
+
+        .about-content p {
+            margin-bottom: 16px;
+            color: #e5e5e5;
+        }
+
+        /* CONTACT */
+        #contact {
+            text-align: center;
+        }
+
+        #contact .section-heading p {
+            color: #ddd;
+        }
+
+        .contact-content {
+            line-height: 2.2;
+            font-size: 14px;
+        }
+
+        .contact-content a {
+            color: #ffcf70;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0d0d0d;
+            color: #ddd;
+            padding: 25px 15px;
+            text-align: center;
+            line-height: 1.9;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #ffcf70;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 650px) {
+            nav {
+                padding: 17px 4%;
+                gap: 9px;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: center;
+                z-index: 300;
+            }
+
+            .logo {
+                font-size: 15px;
+                letter-spacing: 0.3px;
+            }
+
+            /* HAMBURGER BUTTON */
+            .menu-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 43px;
+                height: 43px;
+                flex-shrink: 0;
+                border-radius: 9px;
+                background: rgba(255, 207, 112, 0.15);
+                border: 1px solid rgba(255, 207, 112, 0.65);
+                color: #ffcf70;
+                font-size: 27px;
+                line-height: 1;
+                position: relative;
+                z-index: 302;
+            }
+
+            /* SMALL SIDEBAR WITH HOME BACKGROUND */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: min(220px, 68vw);
+                height: 100vh;
+                height: 100dvh;
+                padding: 75px 18px 25px;
+                background-color: #17120d;
+                background-image:
+                    linear-gradient(
+                        rgba(0, 0, 0, 0.72),
+                        rgba(0, 0, 0, 0.82)
+                    ),
+                    url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=90");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                box-shadow: -8px 0 25px rgba(0, 0, 0, 0.25);
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                justify-content: flex-start;
+                gap: 0;
+                overflow-y: auto;
+                transform: translateX(110%);
+                visibility: hidden;
+                pointer-events: none;
+                transition: transform 0.3s ease,
+                            visibility 0.3s ease;
+                z-index: 301;
+            }
+
+            body.sidebar-open .nav-links {
+                transform: translateX(0);
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            .nav-links a,
+            body.menu-open .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 15px 9px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                color: white;
+                text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+                font-size: 15px;
+                font-weight: 700;
+            }
+
+            .nav-links a:hover,
+            .nav-links a.active,
+            body.menu-open .nav-links a:hover,
+            body.menu-open .nav-links a.active {
+                color: #ffcf70;
+            }
+
+            /* REMOVE THE SECOND CLOSE BUTTON INSIDE THE SIDEBAR */
+            .sidebar-close {
+                display: none;
+            }
+
+            /* DARK OVERLAY */
+            .sidebar-overlay {
+                display: block;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.55);
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transition: opacity 0.3s ease,
+                            visibility 0.3s ease;
+                z-index: 299;
+            }
+
+            body.sidebar-open .sidebar-overlay {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            /* FULL-SCREEN HOME BACKGROUND ON MOBILE */
+            .hero {
+                height: 100vh;
+                height: 100svh;
+                min-height: 100vh;
+                min-height: 100svh;
+                width: 100%;
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: scroll;
+                padding: 105px 20px 35px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hero-content {
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: clamp(34px, 9vw, 55px);
+            }
+
+            .hero p {
+                font-size: 15px;
+                line-height: 1.8;
+            }
+
+            .welcome-label {
+                font-size: 11px;
+                letter-spacing: 4px;
+            }
+
+            /* FULL-SCREEN ABOUT AND CONTACT BACKGROUNDS */
+            #about,
+            #contact {
+                width: 100%;
+                min-height: 100vh;
+                min-height: 100svh;
+                padding: 90px 6% 35px;
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: scroll;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Keep each section at least one full screen tall.
+               Content can extend below the screen if necessary. */
+            #about.active,
+            #contact.active {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: stretch;
+            }
+
+            #about .section-heading,
+            #contact .section-heading {
+                margin-bottom: 20px;
+            }
+
+            .about-content {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+                font-size: 14px;
+                line-height: 1.85;
+            }
+
+            .about-content p {
+                margin-bottom: 14px;
+            }
+
+            .contact-content {
+                font-size: 14px;
+                line-height: 2.2;
+            }
+
+            /* MENU LAYOUT */
+            .section {
+                padding: 100px 4% 45px;
+            }
+
+            .section-heading {
+                margin-bottom: 20px;
+            }
+
+            .menu-category {
+                font-size: 19px;
+                margin-top: 24px;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .food-card {
+                max-width: 100%;
+            }
+
+            .food-image {
+                height: 125px;
+            }
+
+            .food-info {
+                padding: 10px;
+            }
+
+            .food-info h3 {
+                font-size: 15px;
+            }
+
+            .food-description {
+                font-size: 11px;
+                min-height: 34px;
+            }
+
+            .price {
+                font-size: 16px;
+            }
+
+            .quantity-controls {
+                gap: 4px;
+            }
+
+            .quantity-btn {
+                width: 26px;
+                height: 30px;
+                font-size: 19px;
+            }
+
+            .quantity {
+                width: 32px;
+                height: 30px;
+                padding: 4px 1px;
+                font-size: 13px;
+            }
+
+            .order-button {
+                padding: 8px 10px;
+                font-size: 10px;
+            }
+
+            .photo-placeholder {
+                font-size: 10px;
+                padding: 6px;
+            }
+
+            .photo-placeholder .camera {
+                font-size: 23px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .food-image {
+                height: 125px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero::before,
+            .hero-content {
+                animation: none;
+            }
+
+            .view-section,
+            .food-card,
+            .order-button,
+            .nav-links,
+            .sidebar-overlay {
+                animation: none;
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#home" class="logo page-link">Ivy Chop Spot</a>
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="navLinks"
+        >☰</button>
+
+        <div class="nav-links" id="navLinks">
+            <button
+                class="sidebar-close"
+                id="sidebarClose"
+                type="button"
+                aria-label="Close navigation menu"
+            >×</button>
+
+            <a href="#home" class="page-link active">Home</a>
+            <a href="#about" class="page-link">About</a>
+            <a href="#menu" class="page-link">Menu</a>
+            <a href="#contact" class="page-link">Contact</a>
+        </div>
+    </nav>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main>
+
+        <!-- HOME -->
+        <section class="hero view-section active" id="home">
+            <div class="hero-content">
+                <span class="welcome-label">Welcome to</span>
+
+                <h1>IVY CHOP <span>SPOT</span></h1>
+
+                <p class="location-tag">
+                    📍 Anyigba, Kogi State, Nigeria
+                </p>
+
+                <div class="gold-line"></div>
+
+                <p>
+                    Discover delicious pasta, freshly prepared noodles,
+                    tasty snacks, beautiful food trays and freshly made
+                    drinks. Come hungry, leave happy, and make every
+                    meal special.
+                </p>
+            </div>
+        </section>
+
+        <!-- MENU -->
+        <section class="section view-section" id="menu">
+            <div class="section-heading">
+                <h2>Our <span>Menu</span></h2>
+                <p>Freshly prepared meals, snacks and sweet treats.</p>
+                <p>Select your food and quantity to calculate your total.</p>
+            </div>
+
+            <h3 class="menu-category">Pasta &amp; Noodles</h3>
+            <div class="menu-grid" id="pastaGrid"></div>
+
+            <h3 class="menu-category">Snacks, Cakes &amp; Treats</h3>
+            <div class="menu-grid" id="snacksGrid"></div>
+
+            <h3 class="menu-category">Food Trays</h3>
+            <div class="menu-grid" id="specialGrid"></div>
+
+            <h3 class="menu-category">Freshly Made Drinks</h3>
+            <div class="menu-grid" id="drinksGrid"></div>
+
+            <div class="cart-summary">
+                <h3>Your Order Summary</h3>
+                <p id="item-count">0 items selected</p>
+                <p class="cart-total" id="cart-total">₦0</p>
+
+                <button class="checkout-button" onclick="checkout()">
+                    Order on WhatsApp
+                </button>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section view-section" id="about">
+            <div class="section-heading">
+                <h2>About <span>Ivy Chop Spot</span></h2>
+            </div>
+
+            <div class="about-content">
+                <p>
+                    Welcome to Ivy Chop Spot, your destination for delicious
+                    food and satisfying treats in Anyigba, Kogi State, Nigeria.
+                </p>
+
+                <p>
+                    We offer tasty pasta dishes, noodles, snacks, cakes,
+                    food trays and freshly made drinks for different occasions.
+                    Whether you want a quick bite or a special treat, we want
+                    you to enjoy good food and friendly service.
+                </p>
+
+                <p>
+                    Our goal is simple: serve enjoyable food, make ordering
+                    convenient, and give every customer a reason to come back.
+                </p>
+
+                <p>
+                    Thank you for choosing Ivy Chop Spot. We look forward
+                    to serving you!
+                </p>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section view-section" id="contact">
+            <div class="section-heading">
+                <h2>Contact <span>Us</span></h2>
+                <p>Ready to place your order? Reach us below.</p>
+            </div>
+
+            <div class="contact-content">
+                <p>📍 Anyigba, Kogi State, Nigeria</p>
+
+                <p>
+                    WhatsApp:
+                    <a href="https://wa.me/2349150411102"
+                       target="_blank" rel="noopener noreferrer">
+                        09150411102
+                    </a>
+                </p>
+
+                <p>
+                    TikTok:
+                    <a href="https://www.tiktok.com/@oliviadunnie"
+                       target="_blank" rel="noopener noreferrer">
+                        @oliviadunnie
+                    </a>
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Ivy Chop Spot</strong></p>
+        <p>Delicious food and treats in Anyigba, Kogi State.</p>
+
+        <p>
+            <a href="#home" class="page-link">Home</a> |
+            <a href="#menu" class="page-link">Menu</a> |
+            <a href="#about" class="page-link">About</a> |
+            <a href="#contact" class="page-link">Contact</a>
+        </p>
+
+        <p>&copy; 2026 Ivy Chop Spot. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const whatsappNumber = "2349150411102";
+
+        /* MENU IMAGE PATHS */
+        const foods = [
+            {
+                name: "Penne Pasta",
+                price: 4000,
+                category: "pasta",
+                description: "Delicious penne pasta.",
+                image: "Images/penne-pasta.jpg.jpeg"
+            },
+            {
+                name: "Spaghetti",
+                price: 2000,
+                category: "pasta",
+                description: "Tasty spaghetti prepared with sauce.",
+                image: "Images/spaghetti.jpg.jpeg"
+            },
+            {
+                name: "Pasta with Chicken & Egg",
+                price: 7000,
+                category: "pasta",
+                description: "A plate of pasta with chicken and egg.",
+                image: "Images/pasta-chicken-egg.jpg.jpeg"
+            },
+            {
+                name: "Noodles",
+                price: 3500,
+                category: "pasta",
+                description: "Freshly prepared, flavourful noodles.",
+                image: "Images/noddles.jpg.jpeg"
+            },
+            {
+                name: "Cake",
+                price: 2000,
+                category: "snacks",
+                description: "A sweet cake treat.",
+                image: "Images/cake.jpg.jpeg"
+            },
+            {
+                name: "Pancake",
+                price: 5000,
+                category: "snacks",
+                description: "Pancakes prepared for a delicious treat.",
+                image: "Images/pancake.jpg.jpeg"
+            },
+            {
+                name: "Egg Roll",
+                price: 800,
+                category: "snacks",
+                description: "Golden Nigerian egg roll. Price per piece.",
+                image: "Images/egg-roll.jpg.jpeg"
+            },
+            {
+                name: "Fish Roll",
+                price: 1000,
+                category: "snacks",
+                description: "Tasty fish roll. Price per piece.",
+                image: "Images/fish-roll.jpg.jpeg"
+            },
+            {
+                name: "Chin-Chin (Bowl)",
+                price: 15000,
+                category: "snacks",
+                description: "A bowl of crunchy chin-chin.",
+                image: "Images/chin-chin.jpg.jpeg"
+            },
+            {
+                name: "Puff-Puff (Tied Pack)",
+                price: 1000,
+                category: "snacks",
+                description: "Puff-puff sold in a tied pack.",
+                image: "Images/puff-puff-tied.jpg.jpeg"
+            },
+            {
+                name: "Puff-Puff (Per Piece)",
+                price: 100,
+                category: "snacks",
+                description: "Individual puff-puff. Price per piece.",
+                image: "Images/puff-puff.jpg.jpeg"
+            },
+            {
+                name: "Brownies",
+                price: 3000,
+                category: "snacks",
+                description: "Chocolate brownies.",
+                image: "Images/brownies.jpg.jpeg"
+            },
+            {
+                name: "Food Tray",
+                price: 25000,
+                category: "special",
+                description: "A food tray for special occasions.",
+                image: "Images/food-tray.jpg.jpeg"
+            },
+            {
+                name: "Freshly Made Drinks",
+                price: 1500,
+                category: "drinks",
+                description: "Freshly made drinks. Price per serving.",
+                image: "Images/freshly-made-drinks.jpg.jpeg"
+            }
+        ];
+
+        const quantities = new Array(foods.length).fill(0);
+
+        function formatNaira(amount) {
+            return "₦" + amount.toLocaleString("en-NG");
+        }
+
+        /* MOBILE SIDEBAR */
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebarClose = document.getElementById("sidebarClose");
+        const sidebarOverlay = document.getElementById("sidebarOverlay");
+
+        function openSidebar() {
+            document.body.classList.add("sidebar-open");
+            menuToggle.setAttribute("aria-expanded", "true");
+            menuToggle.setAttribute("aria-label", "Close navigation menu");
+            menuToggle.textContent = "×";
+        }
+
+        function closeSidebar() {
+            document.body.classList.remove("sidebar-open");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+            menuToggle.textContent = "☰";
+        }
+
+        menuToggle.addEventListener("click", function() {
+            if (document.body.classList.contains("sidebar-open")) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        });
+
+        sidebarClose.addEventListener("click", closeSidebar);
+        sidebarOverlay.addEventListener("click", closeSidebar);
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closeSidebar();
+            }
+        });
+
+        /* NAVIGATION */
+        function showPage(pageId) {
+            const selectedPage = document.getElementById(pageId);
+
+            if (!selectedPage) return;
+
+            document.body.classList.toggle(
+                "menu-open",
+                pageId === "menu"
+            );
+
+            document.querySelectorAll(".view-section").forEach(section => {
+                section.classList.remove("active");
+            });
+
+            selectedPage.classList.add("active");
+
+            document.querySelectorAll(".page-link").forEach(link => {
+                link.classList.toggle(
+                    "active",
+                    link.getAttribute("href") === "#" + pageId
+                );
+            });
+
+            closeSidebar();
+        }
+
+        document.querySelectorAll(".page-link").forEach(link => {
+            link.addEventListener("click", function(event) {
+                event.preventDefault();
+
+                const pageId = this.getAttribute("href").substring(1);
+
+                showPage(pageId);
+
+                if (window.location.hash !== "#" + pageId) {
+                    window.location.hash = pageId;
+                }
+            });
+        });
+
+        window.addEventListener("hashchange", function() {
+            const pageId = window.location.hash.substring(1) || "home";
+            showPage(pageId);
+        });
+
+        /* RENDER MENU CARDS */
+        function renderMenu() {
+            const grids = {
+                pasta: document.getElementById("pastaGrid"),
+                snacks: document.getElementById("snacksGrid"),
+                special: document.getElementById("specialGrid"),
+                drinks: document.getElementById("drinksGrid")
+            };
+
+            Object.values(grids).forEach(grid => {
+                grid.innerHTML = "";
+            });
+
+            foods.forEach((food, index) => {
+                const photoArea = food.image
+                    ? `<div class="food-image">
+                           <img src="${food.image}"
+                                alt="${food.name}">
+                       </div>`
+                    : `<div class="food-image">
+                           <div class="photo-placeholder">
+                               <span class="camera">📷</span>
+                               <strong>${food.name}</strong><br>
+                               <small>Owner's photo goes here</small>
+                           </div>
+                       </div>`;
+
+                const card = document.createElement("article");
+                card.className = "food-card";
+
+                card.innerHTML = `
+                    ${photoArea}
+
+                    <div class="food-info">
+                        <h3>${food.name}</h3>
+
+                        <p class="food-description">
+                            ${food.description}
+                        </p>
+
+                        <p class="price">
+                            ${formatNaira(food.price)}
+                        </p>
+
+                        <div class="quantity-row">
+                            <label for="quantity-${index}">Quantity</label>
+
+                            <div class="quantity-controls">
+                                <button
+                                    class="quantity-btn minus-btn"
+                                    type="button"
+                                    aria-label="Decrease ${food.name} quantity"
+                                >−</button>
+
+                                <input
+                                    class="quantity"
+                                    id="quantity-${index}"
+                                    type="number"
+                                    min="0"
+                                    step="1"
+                                    value="0"
+                                    inputmode="numeric"
+                                    aria-label="${food.name} quantity"
+                                >
+
+                                <button
+                                    class="quantity-btn plus-btn"
+                                    type="button"
+                                    aria-label="Increase ${food.name} quantity"
+                                >+</button>
+                            </div>
+                        </div>
+
+                        <p class="item-total" id="item-total-${index}">
+                            Item total: ₦0
+                        </p>
+
+                        <button class="order-button" type="button">
+                            Order This Item
+                        </button>
+                    </div>
+                `;
+
+                const quantityInput = card.querySelector(".quantity");
+                const minusButton = card.querySelector(".minus-btn");
+                const plusButton = card.querySelector(".plus-btn");
+                const orderButton = card.querySelector(".order-button");
+
+                quantityInput.addEventListener("input", function() {
+                    updateQuantity(index, this.value);
+                });
+
+                minusButton.addEventListener("click", function() {
+                    updateQuantity(index, quantities[index] - 1);
+                });
+
+                plusButton.addEventListener("click", function() {
+                    updateQuantity(index, quantities[index] + 1);
+                });
+
+                orderButton.addEventListener("click", function() {
+                    orderSingleItem(index);
+                });
+
+                grids[food.category].appendChild(card);
+            });
+        }
+
+        /* UPDATE QUANTITY */
+        function updateQuantity(index, value) {
+            let quantity = Math.floor(Number(value));
+
+            if (!Number.isFinite(quantity) || quantity < 0) {
+                quantity = 0;
+            }
+
+            quantities[index] = quantity;
+
+            const input = document.getElementById(`quantity-${index}`);
+
+            if (input && input.value !== String(quantity)) {
+                input.value = quantity;
+            }
+
+            const itemTotal = foods[index].price * quantity;
+
+            document.getElementById(`item-total-${index}`).textContent =
+                "Item total: " + formatNaira(itemTotal);
+
+            updateCart();
+        }
+
+        /* CALCULATE ORDER TOTAL */
+        function updateCart() {
+            let total = 0;
+            let count = 0;
+
+            foods.forEach((food, index) => {
+                total += food.price * quantities[index];
+                count += quantities[index];
+            });
+
+            document.getElementById("cart-total").textContent =
+                formatNaira(total);
+
+            document.getElementById("item-count").textContent =
+                count + (count === 1 ? " item selected" : " items selected");
+        }
+
+        /* PREPARE WHATSAPP ORDER MESSAGE */
+        function buildOrderMessage(selectedItems) {
+            let message =
+                "Hello Ivy Chop Spot! I would like to order:\n\n";
+
+            let total = 0;
+
+            selectedItems.forEach(item => {
+                const subtotal = item.food.price * item.quantity;
+                total += subtotal;
+
+                message += `${item.food.name} x ${item.quantity} = ${formatNaira(subtotal)}\n`;
+            });
+
+            message += `\nTotal: ${formatNaira(total)}`;
+            message += "\nPlease confirm my order. Thank you!";
+
+            return message;
+        }
+
+        function openWhatsApp(message) {
+            const url =
+                "https://wa.me/" + whatsappNumber +
+                "?text=" + encodeURIComponent(message);
+
+            window.open(url, "_blank", "noopener,noreferrer");
+        }
+
+        /* ORDER ONE ITEM */
+        function orderSingleItem(index) {
+            const quantity = quantities[index];
+
+            if (quantity < 1) {
+                alert("Please select a quantity first.");
+                return;
+            }
+
+            openWhatsApp(buildOrderMessage([
+                { food: foods[index], quantity: quantity }
+            ]));
+        }
+
+        /* ORDER MULTIPLE ITEMS */
+        function checkout() {
+            const selectedItems = foods
+                .map((food, index) => ({
+                    food: food,
+                    quantity: quantities[index]
+                }))
+                .filter(item => item.quantity > 0);
+
+            if (selectedItems.length === 0) {
+                alert("Please select at least one item before ordering.");
+                return;
+            }
+
+            openWhatsApp(buildOrderMessage(selectedItems));
+        }
+
+        /* OPEN CORRECT SECTION ON PAGE LOAD */
+        const initialPage = window.location.hash.substring(1);
+
+        if (initialPage && document.getElementById(initialPage)) {
+            showPage(initialPage);
+        }
+
+        renderMenu();
+        updateCart();
+    </script>
+
+</body>
+</html>
